@@ -30,7 +30,7 @@
     <%= hook :admin_products_index_rows, locals do %>
       <td><%= product.sku %></td>
       <td><%= product.name %></td>
-      <td><%= product.price %></td>
+      <td><%= number_to_currency product.price %></td>
     <% end %>
     <td class="actions">
       <%= hook :admin_products_index_row_actions, locals do %>
