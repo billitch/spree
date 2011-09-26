@@ -86,7 +86,7 @@ module Spree::BaseHelper
   end
 
   def logo(image_path=Spree::Config[:logo])
-    link_to image_tag(image_path), root_path
+    link_to image_tag(image_path), root_path, :id => 'logo'
   end
   
   def flash_messages
