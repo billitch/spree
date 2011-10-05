@@ -118,7 +118,7 @@ class Admin::TaxonsController < Admin::BaseController
 
   def available
     @product = load_product
-    @taxons = params[:q].blank? ? [] : Taxon.where('lower(name) LIKE ?', "%#{params[:q].mb_chars.downcase}%")
+    @taxons = params[:q].blank? ? Taxon.all : Taxon.where('lower(name) LIKE ?', "%#{params[:q].mb_chars.downcase}%")
     @taxons.delete_if { |taxon| @product.taxons.include?(taxon) }
 
     respond_with(:admin, @taxons)
