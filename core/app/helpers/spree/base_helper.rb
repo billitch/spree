@@ -68,7 +68,7 @@ module Spree::BaseHelper
   end
 
   def stylesheet_tags(paths=stylesheet_paths)
-    paths.blank? ? '' : stylesheet_link_tag(paths, :cache => true)
+    paths.blank? ? '' : stylesheet_link_tag(paths, :cache => 'cache/all')
   end
 
   def stylesheet_paths
@@ -81,14 +81,14 @@ module Spree::BaseHelper
   end
 
   def logo(image_path=Spree::Config[:logo])
-    link_to image_tag(image_path), root_path
+    link_to image_tag(image_path), root_path, :id => 'logo'
   end
 
   def available_countries
     return Country.all unless zone = Zone.find_by_name(Spree::Config[:checkout_zone])
     zone.country_list
   end
-  
+
   def format_price(price, options={})
     options.assert_valid_keys(:show_vat_text)
     options.reverse_merge! :show_vat_text => Spree::Config[:show_price_inc_vat]
@@ -99,7 +99,7 @@ module Spree::BaseHelper
       formatted_price
     end
   end
-  
+
   # generates nested url to product based on supplied taxon
   def seo_url(taxon, product = nil)
     return '/t/' + taxon.permalink if product.nil?
@@ -107,7 +107,7 @@ module Spree::BaseHelper
       "not used anymore. Use product_url instead. (called from #{caller[0]})"
     return product_url(product)
   end
-  
+
   def current_orders_product_count
     if current_order.blank? || current_order.item_count < 1
       return 0
