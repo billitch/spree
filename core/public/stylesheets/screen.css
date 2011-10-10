@@ -217,6 +217,15 @@ div#checkout #checkout_form_address #shipping label.error {
   padding: 0px;
   width: auto;
 }
+
+div#checkout #checkout_form_address div.inner input[type=text],
+div#checkout #checkout_form_address div.inner select {
+  width: 70%;
+}
+div#checkout #checkout_form_address .hidden {
+  display: none;
+}
+
 fieldset { margin-bottom: 1em; }
 legend {
   font-size: 150%;
