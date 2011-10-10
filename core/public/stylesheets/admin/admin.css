@@ -65,6 +65,9 @@ body {
       #content a:active,
       #content a:visited {
         color: #3C7DFB; }
+    #content .actions a {
+      whitespace: nowrap;
+      float:left; }
     #content.with-sidebar {
       background: #fff url(../../images/admin/bg/content-back.png) right top repeat-y;
       padding-right: 340px;
