@@ -12,11 +12,8 @@ class Calculator::Vat < Calculator
   # list the vat rates for the default country
   def self.default_rates
     origin = Country.find(Spree::Config[:default_country_id])
-    calcs = Calculator::Vat.includes(:calculable => :zone).select { |vat|
-      vat.calculable.zone.country_list.include?(origin)
-    rescue
-      logger.warn "corrupted VAT calculator: #{vat}"
-      nil
+    calcs = Calculator::Vat.includes(:calculable => :zone).select {
+      |vat| vat.calculable.zone.country_list.include?(origin)
     }
     calcs.collect { |calc| calc.calculable }
   end
