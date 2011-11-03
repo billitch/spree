@@ -15,16 +15,16 @@
 
 <table class="index" id="listing_products">
   <tr data-hook="admin_products_index_headers">
-    <th><%= t(:sku) %></th>
-    <th><%= sort_link @search,:name, t(:name), {}, {:title => 'admin_products_listing_name_title'} %></th>
-    <th><%= sort_link @search,:master_price, t(:master_price) %></th>
-    <th data-hook="admin_products_index_header_actions"></th>
+    <th class="sku"><%= t(:sku) %></th>
+    <th class="name"><%= sort_link @search,:name, t(:name), {}, {:title => 'admin_products_listing_name_title'} %></th>
+    <th class="master-price"><%= sort_link @search,:master_price, t(:master_price) %></th>
+    <th class="actions" data-hook="admin_products_index_header_actions"></th>
   </tr>
 <% @collection.each do |product| %>
   <tr <%= 'style="color:red;"' if product.deleted? %> id="<%= dom_id product %>" data-hook="admin_products_index_rows">
-    <td><%= product.sku %></td>
-    <td><%= product.name %></td>
-    <td><%= number_to_currency product.price %></td>
+    <td class="sku"><%= product.sku %></td>
+    <td class="name"><%= product.name %></td>
+    <td class="master-price"><%= number_to_currency product.price %></td>
     <td class="actions" data-hook="admin_products_index_row_actions">
       <%= link_to_edit product, :class => 'edit' unless product.deleted?  %>
       &nbsp;
