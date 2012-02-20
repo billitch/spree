@@ -28,9 +28,9 @@ module SpreeCore
           Calculator::FlatRate,
           Calculator::FlexiRate,
           Calculator::PerItem,
-          Calculator::PriceBucket]
+          Calculator::PriceSack]
 
-       app.config.spree.calculators.tax_rates = [
+      app.config.spree.calculators.tax_rates = [
           Calculator::SalesTax,
           Calculator::Vat]
     end
@@ -56,7 +56,7 @@ module SpreeCore
 
     # sets the manifests / assets to be precompiled
     initializer "spree.assets.precompile" do |app|
-      app.config.assets.precompile += ['store/all.*', 'admin/all.*', 'admin/spree_dash.*', 'admin/orders/edit_form.js', 'jqPlot/excanvas.min.js', 'admin/images/new.js', 'jquery.jstree/themes/apple/*']
+      app.config.assets.precompile += ['store/all.*', 'admin/all.*', 'admin/spree_dash.*', 'admin/orders/edit_form.js', 'admin/address_states.js', 'jqPlot/excanvas.min.js', 'admin/images/new.js', 'jquery.jstree/themes/apple/*']
     end
 
     # turn off asset debugging since that kills performance in development mode
