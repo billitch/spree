@@ -7,10 +7,10 @@ Rails.application.routes.draw do
              :path_names => { :sign_out => 'logout'}
   resources :users, :only => [:edit, :update]
 
-#  devise_scope :user do
-#    get "/login" => "user_sessions#new", :as => :login
-#    get "/signup" => "user_registrations#new", :as => :signup
-#  end
+  devise_scope :user do
+    get "/login" => "user_sessions#new", :as => :login
+    get "/signup" => "user_registrations#new", :as => :signup
+  end
 
 
   match '/checkout/registration' => 'checkout#registration', :via => :get, :as => :checkout_registration
